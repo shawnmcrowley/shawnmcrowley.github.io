@@ -22,20 +22,16 @@ jobs:
           node-version: '18'
           cache: 'npm'
       
-      - name: Install dependencies
-        run: |
-          npm ci
+      - name: Install root dependencies
+        run: npm ci
           
       - name: Build Docusaurus
         run: |
           # Navigate to Docusaurus directory (adjust path as needed)
-          cd doc
+          cd docs
           npm ci
+          # Run the build script which already handles copying to public/doc
           npm run build
-          
-          # Copy Docusaurus build to Next.js public directory
-          mkdir -p ../public/doc
-          cp -r build/* ../public/doc/
       
       - name: Build Next.js
         run: |
