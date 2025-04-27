@@ -28,7 +28,7 @@ jobs:
       - name: Build Docusaurus
         run: |
           # Navigate to Docusaurus directory (adjust path as needed)
-          cd docs
+          cd doc
           npm ci
           # Run the build script which already handles copying to public/doc
           npm run build
