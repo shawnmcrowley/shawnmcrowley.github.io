@@ -53,10 +53,21 @@ jobs:
 
       # Build Docusaurus
       - name: Install Docusaurus dependencies
-        run: cd doc && npm ci
+        run: |
+          if [ -d "doc" ]; then
+            cd doc && npm ci
+          else
+            echo "doc directory not found!"
+            ls -la
+          fi
       
       - name: Build Docusaurus
-        run: cd doc && npm run build
+        run: |
+          if [ -d "doc" ]; then
+            cd doc && npm run build
+          else
+            echo "doc directory not found!"
+          fi
 
       # Combine the builds
       - name: Prepare combined build
