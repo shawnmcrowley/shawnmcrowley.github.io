@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
-const isProd = process.env.NODE_ENV === 'production'
+//const isProd = process.env.NODE_ENV === 'production'
 const nextConfig = {
     reactStrictMode: true,
-    assetPrefix: isProd ? '/shawnmcrowley.github.io/' : '',
-    basePath: isProd ? '/shawnmcrowley.github.io' : '',
+  //  assetPrefix: isProd ? '/shawnmcrowley.github.io/' : '',
+  //  basePath: isProd ? '/shawnmcrowley.github.io' : '',
     output: 'export',
      // Required for static exports with images
   images: {
@@ -13,12 +13,14 @@ const nextConfig = {
   // Disable server features that won't work with static exports
   trailingSlash: true,
 
+   // For Use in Development Testing of Docusaurus - Comment Out for Deployment
+   /*
     rewrites: async () => [
       {
         source: "/doc",
         destination: "/doc/index.html",
       },
     ],
-    
+*/    
   };
   export default nextConfig;

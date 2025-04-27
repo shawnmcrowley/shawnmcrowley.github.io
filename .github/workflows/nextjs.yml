@@ -28,33 +28,22 @@ jobs:
           node-version: '18'
           cache: 'npm'
       
-      - name: Debug - Show directory structure
-        run: ls -la
-      
-      # Build Next.js app
+      # Build Next.js app - For Next.js 14+
       - name: Install Next.js dependencies
         run: npm ci
       
       - name: Build Next.js app
-        run: |
-          npm run build
-          if command -v npm run export &> /dev/null; then
-            npm run export
-          fi
+        run: npm run build
+        # Next.js 14+ with output: 'export' in config doesn't need a separate export command
       
-      - name: Debug - Show Next.js build output
+      - name: Debug - Check Next.js output
         run: |
-          echo "Current directory structure:"
-          ls -la
           echo "Looking for Next.js output:"
           if [ -d "out" ]; then
-            echo "Found 'out' directory"
+            echo "Found 'out' directory - Next.js output"
             ls -la out
-          elif [ -d ".next" ]; then
-            echo "Found '.next' directory"
-            ls -la .next
           else
-            echo "No Next.js output directory found"
+            echo "No 'out' directory found. This might be an issue."
           fi
       
       # Build Docusaurus
@@ -64,34 +53,30 @@ jobs:
       - name: Build Docusaurus
         run: cd doc && npm run build
       
-      - name: Debug - Show Docusaurus build output
+      - name: Debug - Check Docusaurus output
         run: |
           if [ -d "doc/build" ]; then
-            echo "Found 'doc/build' directory"
+            echo "Found Docusaurus build directory"
             ls -la doc/build
           else
-            echo "No Docusaurus build directory found"
-            echo "Contents of doc directory:"
-            ls -la doc
+            echo "No Docusaurus build output found. This might be an issue."
           fi
       
-      # Combine builds
+      # Combine builds with special handling for Next.js 14+
       - name: Prepare combined build
         run: |
           mkdir -p combined-build
           
-          # Copy Next.js output
+          # For Next.js 14+ with output: 'export' in config
           if [ -d "out" ]; then
-            echo "Copying from 'out' directory"
+            echo "Copying Next.js output from 'out' directory"
             cp -r out/* combined-build/
-          elif [ -d ".next/out" ]; then
-            echo "Copying from '.next/out' directory"
-            cp -r .next/out/* combined-build/
-          elif [ -d ".next" ]; then
-            echo "Copying from '.next' directory"
-            cp -r .next/* combined-build/
           else
-            echo "WARNING: No Next.js output found"
+            echo "ERROR: Next.js output directory 'out' not found!"
+            echo "Make sure your next.config.js has 'output: export'"
+            echo "Current directory contents:"
+            ls -la
+            exit 1
           fi
           
           # Copy Docusaurus output
@@ -100,16 +85,14 @@ jobs:
             mkdir -p combined-build/doc
             cp -r doc/build/* combined-build/doc/
           else
-            echo "WARNING: No Docusaurus output found"
-          fi
-          
-          echo "Combined build directory contents:"
-          ls -la combined-build
-          
-          if [ -z "$(ls -A combined-build)" ]; then
-            echo "ERROR: combined-build directory is empty!"
+            echo "ERROR: Docusaurus build directory not found!"
+            echo "Contents of doc directory:"
+            ls -la doc
             exit 1
           fi
+          
+          echo "Final combined build directory contents:"
+          ls -la combined-build
       
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1
