@@ -49,7 +49,10 @@ jobs:
           cp -r /out/* combined-build/
           mkdir -p combined-build/doc
           cp -r doc/build/* combined-build/doc/
-      
+
+      - name: Debug combined build
+        run: ls -R combined-build  # Add this step to validate the build contents
+
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
