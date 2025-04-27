@@ -8,6 +8,9 @@ First, run the development server:
 npm run dev
 
 ```
+## Main Page
+    Updated Workflow
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
