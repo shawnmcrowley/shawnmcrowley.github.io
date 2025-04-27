@@ -27,6 +27,10 @@ jobs:
         with:
           node-version: '18'
           cache: npm
+
+          # Debug repository structure
+      - name: List repository structure
+        run: ls -la
       
       # Build Next.js app
       - name: Install Next.js dependencies
@@ -35,6 +39,18 @@ jobs:
       - name: Build Next.js app
         run: npm run build && npm run export
       
+   # Check if export is needed as a separate command
+      - name: Check Next.js output directory
+        run: |
+         ls -la
+         if [ -d "out" ]; then
+         echo "Next.js build created 'out' directory"
+         else
+         echo "No 'out' directory found, trying export"
+         npm run export || echo "Export failed or not needed"
+         fi
+         ls -la
+
       # Build Docusaurus
       - name: Install Docusaurus dependencies
         run: cd doc && npm ci
