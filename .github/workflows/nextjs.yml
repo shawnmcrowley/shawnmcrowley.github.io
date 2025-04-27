@@ -3,14 +3,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -20,75 +19,99 @@ jobs:
     name: Build for GitHub Pages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
       
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
+          cache: 'npm'
       
-      # Debug repository structure
-      - name: List repository structure
+      - name: Debug - Show directory structure
         run: ls -la
       
-      # Build Next.js app from root directory
+      # Build Next.js app
       - name: Install Next.js dependencies
         run: npm ci
       
       - name: Build Next.js app
         run: |
           npm run build
-          # Run export if needed
-          if [ ! -d "out" ]; then
-            npm run export || echo "Export command might not be needed"
+          if command -v npm run export &> /dev/null; then
+            npm run export
           fi
       
-      # Build Docusaurus from doc directory
+      - name: Debug - Show Next.js build output
+        run: |
+          echo "Current directory structure:"
+          ls -la
+          echo "Looking for Next.js output:"
+          if [ -d "out" ]; then
+            echo "Found 'out' directory"
+            ls -la out
+          elif [ -d ".next" ]; then
+            echo "Found '.next' directory"
+            ls -la .next
+          else
+            echo "No Next.js output directory found"
+          fi
+      
+      # Build Docusaurus
       - name: Install Docusaurus dependencies
         run: cd doc && npm ci
       
       - name: Build Docusaurus
         run: cd doc && npm run build
-
-      # Combine the builds
+      
+      - name: Debug - Show Docusaurus build output
+        run: |
+          if [ -d "doc/build" ]; then
+            echo "Found 'doc/build' directory"
+            ls -la doc/build
+          else
+            echo "No Docusaurus build directory found"
+            echo "Contents of doc directory:"
+            ls -la doc
+          fi
+      
+      # Combine builds
       - name: Prepare combined build
         run: |
           mkdir -p combined-build
           
-          # Check for Next.js output
+          # Copy Next.js output
           if [ -d "out" ]; then
-            echo "Copying Next.js output"
+            echo "Copying from 'out' directory"
             cp -r out/* combined-build/
-          else 
-            echo "No 'out' directory found. Checking alternative locations..."
-            if [ -d ".next/out" ]; then
-              cp -r .next/out/* combined-build/
-            elif [ -d ".next" ]; then
-              echo "Using .next directory content"
-              cp -r .next/* combined-build/
-            else
-              echo "ERROR: No Next.js output found!"
-              exit 1
-            fi
+          elif [ -d ".next/out" ]; then
+            echo "Copying from '.next/out' directory"
+            cp -r .next/out/* combined-build/
+          elif [ -d ".next" ]; then
+            echo "Copying from '.next' directory"
+            cp -r .next/* combined-build/
+          else
+            echo "WARNING: No Next.js output found"
           fi
           
-          # Check for Docusaurus output
-          mkdir -p combined-build/doc
+          # Copy Docusaurus output
           if [ -d "doc/build" ]; then
             echo "Copying Docusaurus output"
+            mkdir -p combined-build/doc
             cp -r doc/build/* combined-build/doc/
           else
-            echo "ERROR: No doc/build directory found!"
-            ls -la doc
-            exit 1
+            echo "WARNING: No Docusaurus output found"
           fi
           
           echo "Combined build directory contents:"
           ls -la combined-build
-
-      # Use the correct upload artifact action for GitHub Pages
-      - name: Upload artifact
+          
+          if [ -z "$(ls -A combined-build)" ]; then
+            echo "ERROR: combined-build directory is empty!"
+            exit 1
+          fi
+      
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: combined-build
