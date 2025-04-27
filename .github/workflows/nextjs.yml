@@ -3,14 +3,13 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -27,8 +26,8 @@ jobs:
         with:
           node-version: '18'
           cache: npm
-
-          # Debug repository structure
+      
+      # Debug repository structure
       - name: List repository structure
         run: ls -la
       
@@ -37,20 +36,20 @@ jobs:
         run: npm ci
       
       - name: Build Next.js app
-        run: npm run build && npm run export
-      
-   # Check if export is needed as a separate command
+        run: npm run build
+        
+      # Check if export is needed as a separate command
       - name: Check Next.js output directory
         run: |
-         ls -la
-         if [ -d "out" ]; then
-         echo "Next.js build created 'out' directory"
-         else
-         echo "No 'out' directory found, trying export"
-         npm run export || echo "Export failed or not needed"
-         fi
-         ls -la
-
+          ls -la
+          if [ -d "out" ]; then
+            echo "Next.js build created 'out' directory"
+          else
+            echo "No 'out' directory found, trying export"
+            npm run export || echo "Export failed or not needed"
+          fi
+          ls -la
+      
       # Build Docusaurus
       - name: Install Docusaurus dependencies
         run: |
@@ -69,8 +68,8 @@ jobs:
             echo "doc directory not found!"
           fi
 
-        # Prepare the combined build with checks
-        - name: Prepare combined build
+      # Prepare the combined build with checks
+      - name: Prepare combined build
         run: |
           mkdir -p combined-build
           
@@ -105,11 +104,10 @@ jobs:
             echo "ERROR: combined-build directory is empty!"
             exit 1
           fi
-          
+
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: combined-build
           path: combined-build
 
   deploy:
