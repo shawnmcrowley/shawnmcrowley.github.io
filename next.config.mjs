@@ -5,6 +5,14 @@ const nextConfig = {
     assetPrefix: isProd ? '/shawnmcrowley.github.io/' : '',
     basePath: isProd ? '/shawnmcrowley.github.io' : '',
     output: 'export',
+     // Required for static exports with images
+  images: {
+    unoptimized: true,
+  },
+  
+  // Disable server features that won't work with static exports
+  trailingSlash: true,
+
     rewrites: async () => [
       {
         source: "/doc",
