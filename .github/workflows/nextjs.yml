@@ -3,13 +3,14 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # or your default branch name
 
 permissions:
   contents: write
   pages: write
   id-token: write
 
+# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -31,44 +32,26 @@ jobs:
       - name: List repository structure
         run: ls -la
       
-      # Build Next.js app
+      # Build Next.js app from root directory
       - name: Install Next.js dependencies
         run: npm ci
       
       - name: Build Next.js app
-        run: npm run build
-        
-      # Check if export is needed as a separate command
-      - name: Check Next.js output directory
         run: |
-          ls -la
-          if [ -d "out" ]; then
-            echo "Next.js build created 'out' directory"
-          else
-            echo "No 'out' directory found, trying export"
-            npm run export || echo "Export failed or not needed"
+          npm run build
+          # Run export if needed
+          if [ ! -d "out" ]; then
+            npm run export || echo "Export command might not be needed"
           fi
-          ls -la
       
-      # Build Docusaurus
+      # Build Docusaurus from doc directory
       - name: Install Docusaurus dependencies
-        run: |
-          if [ -d "doc" ]; then
-            cd doc && npm ci
-          else
-            echo "doc directory not found!"
-            ls -la
-          fi
+        run: cd doc && npm ci
       
       - name: Build Docusaurus
-        run: |
-          if [ -d "doc" ]; then
-            cd doc && npm run build
-          else
-            echo "doc directory not found!"
-          fi
+        run: cd doc && npm run build
 
-      # Prepare the combined build with checks
+      # Combine the builds
       - name: Prepare combined build
         run: |
           mkdir -p combined-build
@@ -78,13 +61,15 @@ jobs:
             echo "Copying Next.js output"
             cp -r out/* combined-build/
           else 
-            echo "No 'out' directory found! Checking for '.next/out'"
+            echo "No 'out' directory found. Checking alternative locations..."
             if [ -d ".next/out" ]; then
               cp -r .next/out/* combined-build/
+            elif [ -d ".next" ]; then
+              echo "Using .next directory content"
+              cp -r .next/* combined-build/
             else
-              echo "No Next.js output found in expected locations:"
-              ls -la
-              ls -la .next || echo ".next directory not found"
+              echo "ERROR: No Next.js output found!"
+              exit 1
             fi
           fi
           
@@ -94,17 +79,15 @@ jobs:
             echo "Copying Docusaurus output"
             cp -r doc/build/* combined-build/doc/
           else
-            echo "No 'doc/build' directory found!"
-            ls -la doc || echo "doc directory not found"
+            echo "ERROR: No doc/build directory found!"
+            ls -la doc
+            exit 1
           fi
           
           echo "Combined build directory contents:"
           ls -la combined-build
-          if [ -z "$(ls -A combined-build)" ]; then
-            echo "ERROR: combined-build directory is empty!"
-            exit 1
-          fi
 
+      # Use the correct upload artifact action for GitHub Pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
