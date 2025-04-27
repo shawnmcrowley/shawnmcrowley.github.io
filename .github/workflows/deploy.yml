@@ -28,7 +28,7 @@ jobs:
       - name: Build Docusaurus
         run: |
           # Navigate to Docusaurus directory (adjust path as needed)
-          cd doc
+          cd docs
           npm ci
           # Run the build script which already handles copying to public/doc
           npm run build
@@ -37,10 +37,8 @@ jobs:
         run: |
           # Return to root directory and build Next.js
           cd $GITHUB_WORKSPACE
+          # With output: 'export' in next.config.js, this will generate static files
           npm run build
-          
-      - name: Export Next.js static files
-        run: npm run export
         
       - name: Configure GitHub Pages
         # Create .nojekyll file to prevent Jekyll processing
@@ -50,5 +48,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  # The branch to deploy to
-          folder: out       # The folder the action should deploy
+          folder: out       # The folder the action should deploy (Next.js exports to 'out' by default)
           clean: true       # Automatically remove deleted files from the deploy branch
