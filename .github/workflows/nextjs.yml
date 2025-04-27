@@ -46,7 +46,7 @@ jobs:
       - name: Prepare combined build
         run: |
           mkdir -p combined-build
-          cp -r /out/* combined-build/
+          cp -r out/* combined-build/
           mkdir -p combined-build/doc
           cp -r doc/build/* combined-build/doc/
 
