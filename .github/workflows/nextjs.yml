@@ -54,7 +54,7 @@ jobs:
         run: ls -R combined-build  # Add this step to validate the build contents
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3.2.0
+        uses: actions/upload-artifact@v3
         with:
           name: combined-build
           path: combined-build
