@@ -69,17 +69,43 @@ jobs:
             echo "doc directory not found!"
           fi
 
-      # Combine the builds
-      - name: Prepare combined build
+        # Prepare the combined build with checks
+        - name: Prepare combined build
         run: |
           mkdir -p combined-build
-          cp -r out/* combined-build/
+          
+          # Check for Next.js output
+          if [ -d "out" ]; then
+            echo "Copying Next.js output"
+            cp -r out/* combined-build/
+          else 
+            echo "No 'out' directory found! Checking for '.next/out'"
+            if [ -d ".next/out" ]; then
+              cp -r .next/out/* combined-build/
+            else
+              echo "No Next.js output found in expected locations:"
+              ls -la
+              ls -la .next || echo ".next directory not found"
+            fi
+          fi
+          
+          # Check for Docusaurus output
           mkdir -p combined-build/doc
-          cp -r doc/build/* combined-build/doc/
-
-      - name: Debug combined build
-        run: ls -R combined-build  # Add this step to validate the build contents
-
+          if [ -d "doc/build" ]; then
+            echo "Copying Docusaurus output"
+            cp -r doc/build/* combined-build/doc/
+          else
+            echo "No 'doc/build' directory found!"
+            ls -la doc || echo "doc directory not found"
+          fi
+          
+          echo "Combined build directory contents:"
+          ls -la combined-build
+          if [ -z "$(ls -A combined-build)" ]; then
+            echo "ERROR: combined-build directory is empty!"
+            exit 1
+          fi
+          
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
