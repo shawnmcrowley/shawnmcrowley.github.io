@@ -72,7 +72,7 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          {to: '../', label: 'Dashboard', position: 'left'},
+          {href: 'https://shawnmcrowley.github.io', label: 'Dashboard', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
