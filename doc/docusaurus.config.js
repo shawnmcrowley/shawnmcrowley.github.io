@@ -72,11 +72,12 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
+          {to: '/', label: 'Dashboard', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documents',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
