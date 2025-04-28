@@ -66,14 +66,13 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'DashBoard',
+        title: 'Portfolio',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
-          to: '../', label: 'DashBoard'
         },
         items: [
-          
+          {to: '../', label: 'Dashboard', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
