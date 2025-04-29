@@ -13,7 +13,7 @@ const nextConfig = {
   // Disable server features that won't work with static exports
   trailingSlash: isDev ? false : true,
 
-  // For Use in Development Testing of Docusaurus - Comment Out for Deployment
+  // For Use in Development Testing of Docusaurus - set development mode in .env.local
 
   rewrites: isDev 
     ? async () => [
