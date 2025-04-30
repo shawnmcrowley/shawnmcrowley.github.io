@@ -68,8 +68,8 @@ const config = {
       navbar: {
         title: 'Portfolio',
         logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          alt: 'Prime Logo',
+          src: 'img/logo.png',
         },
         items: [
           {href: '/', label: 'DashBoard', position: 'right'},
