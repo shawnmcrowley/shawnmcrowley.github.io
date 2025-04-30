@@ -34,7 +34,7 @@ export default function Navbar() {
             <Button variant="ghost" className="text-sm">
               Sign In
             </Button>
-            <Button className="text-sm bg-gradient-to-r from-primary to-accent hover:opacity-90">Sign In</Button>
+            
           </div>
         </div>
       </div>

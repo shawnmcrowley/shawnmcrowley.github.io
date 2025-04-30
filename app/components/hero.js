@@ -13,7 +13,7 @@ export default function Hero() {
           All Open Source, Focused on Development, Experiments, AI, PWA, Containerization and LLM
         </p>
         <Button className="relative group px-8 py-6 text-lg bg-gradient-to-r from-primary to-accent hover:opacity-90">
-          <span className="relative z-10">Read the Project Documentation and Articles</span>
+          <span className="relative z-10">Blogs and Articles</span>
           <div className="absolute inset-0 bg-white/20 blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
         </Button>
       </div>
