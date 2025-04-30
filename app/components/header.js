@@ -19,7 +19,7 @@ export default function Header() {
             Pricing
           </Link>
         </nav>
-        <Button>Get Started</Button>
+        <Button>Project Source Code</Button>
       </div>
     </header>
   )

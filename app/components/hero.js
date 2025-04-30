@@ -7,7 +7,7 @@ export default function Hero() {
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-8">
           Portfolio Focused on 
           <br />
-          <span className="text-gray-400">Nextjs Development</span>
+          <span className="text-gray-400">Next.js Development</span>
         </h1>
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-400 mb-10">
           All Open Source, Focused on Development, Experiments, AI, PWA, Containerization and LLM

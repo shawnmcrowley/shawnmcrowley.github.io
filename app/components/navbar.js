@@ -15,14 +15,14 @@ export default function Navbar() {
             </Link>
             <div className="hidden md:block ml-10">
               <div className="flex items-center space-x-8">
-                <Link href="#" className="text-sm text-gray-300 hover:text-white">
-                  Pricing
+                <Link href="/doc/docs/" className="text-sm text-gray-300 hover:text-white">
+                  Documentation
                 </Link>
-                <Link href="#" className="text-sm text-gray-300 hover:text-white">
-                  Resources
+                <Link href="/doc/blog/" className="text-sm text-gray-300 hover:text-white">
+                  Blog
                 </Link>
-                <Link href="#" className="text-sm text-gray-300 hover:text-white">
-                  Community
+                <Link href="https://github.com/shawnmcrowley/" className="text-sm text-gray-300 hover:text-white">
+                  Source Code
                 </Link>
                 <Link href="#" className="text-sm text-gray-300 hover:text-white">
                   Download
@@ -34,7 +34,7 @@ export default function Navbar() {
             <Button variant="ghost" className="text-sm">
               Sign In
             </Button>
-            <Button className="text-sm bg-gradient-to-r from-primary to-accent hover:opacity-90">Get Started</Button>
+            <Button className="text-sm bg-gradient-to-r from-primary to-accent hover:opacity-90">Sign In</Button>
           </div>
         </div>
       </div>
