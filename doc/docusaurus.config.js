@@ -10,7 +10,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'Shawn M. Crowley\'s Portfolio',
   tagline: 'Leadership, Consulting, Development',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/icon.ico',
 
   // Set the production url of your site here
   url: 'https://shawnmcrowley.github.io/',
@@ -64,7 +64,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/logo.png',
       navbar: {
         title: 'Portfolio',
         logo: {
