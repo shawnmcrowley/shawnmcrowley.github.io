@@ -16,16 +16,16 @@ export default function Navbar() {
             <div className="hidden md:block ml-10">
               <div className="flex items-center space-x-8">
                 <Link href="/doc/docs/intro" className="text-sm text-gray-300 hover:text-white">
-                  Documentation
+                  Articles
                 </Link>
                 <Link href="/doc/blog/" className="text-sm text-gray-300 hover:text-white">
                   Blog
                 </Link>
                 <Link href="https://github.com/shawnmcrowley/" className="text-sm text-gray-300 hover:text-white">
-                  Source Code
+                  Projects
                 </Link>
                 <Link href="#" className="text-sm text-gray-300 hover:text-white">
-                  Download
+                  Bio
                 </Link>
               </div>
             </div>
