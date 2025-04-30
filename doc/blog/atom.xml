@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://shawnmcrowley.github.io/doc/blog"/>
     <subtitle>Shawn M. Crowley's Portfolio Blog</subtitle>
-    <icon>https://shawnmcrowley.github.io/doc/img/favicon.ico</icon>
+    <icon>https://shawnmcrowley.github.io/doc/img/icon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>https://shawnmcrowley.github.io/doc/blog/welcome</id>
