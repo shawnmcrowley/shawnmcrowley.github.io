@@ -24,7 +24,7 @@ export default function Navbar() {
                 <Link href="https://github.com/shawnmcrowley/" className="text-sm text-gray-300 hover:text-white">
                   Projects
                 </Link>
-                <Link href="#" className="text-sm text-gray-300 hover:text-white">
+                <Link href="https://www.linkedin.com/in/shawnmcrowley" className="text-sm text-gray-300 hover:text-white">
                   Bio
                 </Link>
               </div>

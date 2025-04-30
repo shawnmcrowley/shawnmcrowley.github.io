@@ -3,23 +3,23 @@ import { CheckCircle, Zap, Users, TrendingUp } from "lucide-react"
 const features = [
   {
     icon: <CheckCircle className="h-8 w-8 text-primary" />,
-    title: "Task Management",
-    description: "Organize and prioritize tasks with ease.",
+    title: "Application Development",
+    description: "Custom Software Develop with all platforms in mind; Cloud, Desktop, Mobile. CI/CD Delivery with or without Containerization",
   },
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
-    title: "Real-time Collaboration",
-    description: "Work together seamlessly in real-time.",
+    title: "Solution Engineering",
+    description: "Build and Grow Your Solution Engineering/Technical Sales Organization to Focus on Discovery and Qualification of Technical Solution Opportunities.  It's NOT Just Demo's.",
   },
   {
     icon: <Users className="h-8 w-8 text-primary" />,
-    title: "Team Communication",
-    description: "Stay connected with built-in messaging.",
+    title: "Sales Enablement and Customer Success",
+    description: "Focus On Full Solution Implementation and Up-Sell/Cross Sell Strategies.",
   },
   {
     icon: <TrendingUp className="h-8 w-8 text-primary" />,
-    title: "Analytics Dashboard",
-    description: "Track progress and gain insights with powerful analytics.",
+    title: "Strategy + Execution + Metrics",
+    description: "What Are You Going to Do, How Are You Going to Do It, And When to Measure It.",
   },
 ]
 
@@ -27,7 +27,7 @@ export default function Features() {
   return (
     <section id="features" className="py-20">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
+        <h2 className="text-3xl font-bold text-center mb-12">Key Capabilities</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div
