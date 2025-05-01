@@ -4,7 +4,7 @@ const features = [
   {
     icon: <CheckCircle className="h-8 w-8 text-primary" />,
     title: "Application Development",
-    description: "Custom Software Develop with all platforms in mind; Cloud, Desktop, Mobile. CI/CD Delivery with or without Containerization",
+    description: "Custom Software Development with all platforms in mind; Cloud, Desktop, Mobile. CI/CD Delivery with or without Containerization",
   },
   {
     icon: <Zap className="h-8 w-8 text-primary" />,

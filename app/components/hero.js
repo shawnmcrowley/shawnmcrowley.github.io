@@ -1,4 +1,3 @@
-import { Button } from "@/app/components/ui/button"
 
 export default function Hero() {
   return (
@@ -12,10 +11,6 @@ export default function Hero() {
         <p className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-400 mb-10">
           All Open Source, Focused on Development, Experiments, AI, PWA, Containerization and LLM
         </p>
-        <Button className="relative group px-8 py-6 text-lg bg-gradient-to-r from-primary to-accent hover:opacity-90">
-          <span className="relative z-10">Unconscious Streaming</span>
-          <div className="absolute inset-0 bg-white/20 blur-lg group-hover:blur-xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
-        </Button>
       </div>
     </div>
   )

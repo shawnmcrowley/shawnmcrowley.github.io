@@ -1,4 +1,5 @@
 import { Button } from "./ui/button"
+import { Link } from "next/link"
 
 export default function CTA() {
   return (
@@ -10,8 +11,8 @@ export default function CTA() {
             <p className="text-xl mb-8 max-w-2xl mx-auto text-foreground/80">
               Reach Out To Connect
             </p>
-            <Button size="lg" className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 transition-all duration-300">
-              Connect, it's fun to expand your network
+            <Button asChild size="lg" className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 transition-all duration-300">
+              <Link href="https://www.linkedin.com/in/shawnmcrowley">Connect, it's fun to expand your network</Link>
             </Button>
           </div>
         </div>
