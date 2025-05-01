@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Button } from "@/app/components/ui/button"
+import Link from "next/link";
+import { Button } from "@/app/components/ui/button";
 
 export default function Navbar() {
   return (
@@ -15,29 +15,35 @@ export default function Navbar() {
             </Link>
             <div className="hidden md:block ml-10">
               <div className="flex items-center space-x-8">
-                <Link href="/doc/docs/intro" className="text-sm text-gray-300 hover:text-white">
+                <Link
+                  href="/doc/docs/intro"
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Articles
                 </Link>
-                <Link href="/doc/blog/" className="text-sm text-gray-300 hover:text-white">
+                <Link
+                  href="/doc/blog/"
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Blog
                 </Link>
-                <Link href="https://github.com/shawnmcrowley/" className="text-sm text-gray-300 hover:text-white">
+                <Link
+                  href="https://github.com/shawnmcrowley/"
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Projects
                 </Link>
-                <Link href="https://www.linkedin.com/in/shawnmcrowley" className="text-sm text-gray-300 hover:text-white">
+                <Link
+                  href="https://www.linkedin.com/in/shawnmcrowley"
+                  className="text-sm text-gray-300 hover:text-white"
+                >
                   Bio
                 </Link>
               </div>
             </div>
           </div>
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-sm">
-              Sign In
-            </Button>
-            
-          </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }

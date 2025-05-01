@@ -9,10 +9,10 @@ export default function CTA() {
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Understand the Art of the Possible!</h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto text-foreground/80">
-              Reach Out To Connect
+              Reach Out To Connect, it's fun to expand your network
             </p>
-            <Button asChild size="lg" className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 transition-all duration-300">
-              <Link href="https://www.linkedin.com/in/shawnmcrowley">Connect, it's fun to expand your network</Link>
+            <Button as="a" href="https://www.linkedin.com/in/shawnmcrowley/" size="lg" className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 transition-all duration-300">
+              Connect
             </Button>
           </div>
         </div>

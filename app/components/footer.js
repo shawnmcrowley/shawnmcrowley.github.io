@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h3 className="text-lg font-semibold mb-4">@shawnmcrowley</h3>
-          <p className="text-foreground/70">Streamlining Your Development and Technical Sales Process, one conversation at a time.</p>
+          <p className="text-foreground/70">Streamlining Your Development and Technical Sales Process, One Conversation At A Time.</p>
         </div>
         <div>
           <h4 className="text-lg font-semibold mb-4">Connect</h4>
