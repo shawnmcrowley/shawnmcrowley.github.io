@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Amazon Web Services (AWS) Basics
+# AWS Basics
 
 Documents are **groups of pages** connected through:
 

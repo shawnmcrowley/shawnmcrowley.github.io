@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-nextjs-dev/NEXTJS16_MIGRATION_EVALUATION" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Next.js 16 Migration Evaluation - API Dashboard | Shawn M. Crowley&#x27;s Portfolio</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://shawnmcrowley.github.io/doc/img/logo.png"><meta data-rh="true" name="twitter:image" content="https://shawnmcrowley.github.io/doc/img/logo.png"><meta data-rh="true" property="og:url" content="https://shawnmcrowley.github.io/doc/docs/nextjs-dev/NEXTJS16_MIGRATION_EVALUATION"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Next.js 16 Migration Evaluation - API Dashboard | Shawn M. Crowley&#x27;s Portfolio"><meta data-rh="true" name="description" content="Current State Analysis"><meta data-rh="true" property="og:description" content="Current State Analysis"><link data-rh="true" rel="icon" href="/doc/img/icon.ico"><link data-rh="true" rel="canonical" href="https://shawnmcrowley.github.io/doc/docs/nextjs-dev/NEXTJS16_MIGRATION_EVALUATION"><link data-rh="true" rel="alternate" href="https://shawnmcrowley.github.io/doc/docs/nextjs-dev/NEXTJS16_MIGRATION_EVALUATION" hreflang="en"><link data-rh="true" rel="alternate" href="https://shawnmcrowley.github.io/doc/docs/nextjs-dev/NEXTJS16_MIGRATION_EVALUATION" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Nextjs Dev Best Practices","item":"https://shawnmcrowley.github.io/doc/docs/category/nextjs-dev-best-practices"},{"@type":"ListItem","position":2,"name":"Next.js 16 Migration Evaluation - API Dashboard","item":"https://shawnmcrowley.github.io/doc/docs/nextjs-dev/NEXTJS16_MIGRATION_EVALUATION"}]}</script><link rel="alternate" type="application/rss+xml" href="/doc/blog/rss.xml" title="Shawn M. Crowley&#39;s Portfolio RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/doc/blog/atom.xml" title="Shawn M. Crowley&#39;s Portfolio Atom Feed"><link rel="stylesheet" href="/doc/assets/css/styles.592a8c4b.css">
+<script src="/doc/assets/js/runtime~main.72b2fa98.js" defer="defer"></script>
+<script src="/doc/assets/js/main.6658de0e.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/doc/"><div class="navbar__logo"><img src="/doc/img/logo.png" alt="Prime Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/doc/img/logo.png" alt="Prime Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Portfolio</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/doc/docs/intro">Documents</a><a class="navbar__item navbar__link" href="/doc/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://shawnmcrowley.github.io" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">DashBoard<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><a href="https://github.com/shawnmcrowley/shawnmcrowley.github.io" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/doc/docs/intro"><span title="Intro to Documents" class="linkLabel_WmDU">Intro to Documents</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/doc/docs/category/amazon-web-services-aws---basics"><span title="Amazon Web Services (AWS) - Basics" class="categoryLinkLabel_W154">Amazon Web Services (AWS) - Basics</span></a><button aria-label="Expand sidebar category &#x27;Amazon Web Services (AWS) - Basics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/doc/docs/category/git-and-github-setupusage"><span title="Git and GitHub Setup/Usage" class="categoryLinkLabel_W154">Git and GitHub Setup/Usage</span></a><button aria-label="Expand sidebar category &#x27;Git and GitHub Setup/Usage&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/doc/docs/category/nextjs-dev-best-practices"><span title="Nextjs Dev Best Practices" class="categoryLinkLabel_W154">Nextjs Dev Best Practices</span></a><button aria-label="Collapse sidebar category &#x27;Nextjs Dev Best Practices&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/docs/nextjs-dev/create-a-document"><span title="Amazon Web Services (AWS) Basics" class="linkLabel_WmDU">Amazon Web Services (AWS) Basics</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/doc/docs/nextjs-dev/NEXT15_to_NEXT16"><span title="NEXT15_to_NEXT16" class="linkLabel_WmDU">NEXT15_to_NEXT16</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/doc/docs/nextjs-dev/NEXTJS16_MIGRATION_EVALUATION"><span title="Next.js 16 Migration Evaluation - API Dashboard" class="linkLabel_WmDU">Next.js 16 Migration Evaluation - API Dashboard</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/doc/docs/category/nginx-setup-and-config"><span title="Nginx Setup and Config" class="categoryLinkLabel_W154">Nginx Setup and Config</span></a><button aria-label="Expand sidebar category &#x27;Nginx Setup and Config&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/doc/docs/category/traefik-proxy-and-api---basics"><span title="Traefik Proxy and API - Basics" class="categoryLinkLabel_W154">Traefik Proxy and API - Basics</span></a><button aria-label="Expand sidebar category &#x27;Traefik Proxy and API - Basics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/doc/docs/category/tutorial---basics"><span title="Tutorial - Basics" class="categoryLinkLabel_W154">Tutorial - Basics</span></a><button aria-label="Expand sidebar category &#x27;Tutorial - Basics&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/doc/docs/category/tutorial---extras"><span title="Tutorial - Extras" class="categoryLinkLabel_W154">Tutorial - Extras</span></a><button aria-label="Expand sidebar category &#x27;Tutorial - Extras&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/doc/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/doc/docs/category/nextjs-dev-best-practices"><span>Nextjs Dev Best Practices</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Next.js 16 Migration Evaluation - API Dashboard</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Next.js 16 Migration Evaluation - API Dashboard</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="current-state-analysis">Current State Analysis<a href="#current-state-analysis" class="hash-link" aria-label="Direct link to Current State Analysis" title="Direct link to Current State Analysis" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="current-version">Current Version<a href="#current-version" class="hash-link" aria-label="Direct link to Current Version" title="Direct link to Current Version" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Next.js</strong>: 14.2.4</li>
+<li class=""><strong>React</strong>: 18.x</li>
+<li class=""><strong>Node.js</strong>: Compatible with Next.js 14</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="project-structure">Project Structure<a href="#project-structure" class="hash-link" aria-label="Direct link to Project Structure" title="Direct link to Project Structure" translate="no">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">api-dashboard/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── app/                    # App Router (✅ Next.js 13+ compatible)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── api/               # API routes</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── lib/               # Utilities</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── pages/             # Page components</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── layout.js          # Root layout</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── page.js            # Home page</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── components/            # Shared components</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── ui/               # UI components</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└── public/               # Static assets</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="migration-compatibility-assessment">Migration Compatibility Assessment<a href="#migration-compatibility-assessment" class="hash-link" aria-label="Direct link to Migration Compatibility Assessment" title="Direct link to Migration Compatibility Assessment" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-compatible---no-changes-required">✅ <strong>COMPATIBLE</strong> - No Changes Required<a href="#-compatible---no-changes-required" class="hash-link" aria-label="Direct link to -compatible---no-changes-required" title="Direct link to -compatible---no-changes-required" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>App Router Structure</strong></p>
+<ul>
+<li class="">Already using App Router (<code>app/</code> directory)</li>
+<li class="">Layout and page structure follows Next.js 13+ conventions</li>
+<li class="">No Pages Router migration needed</li>
+</ul>
+</li>
+<li class="">
+<p><strong>API Routes</strong></p>
+<ul>
+<li class="">Current structure: <code>app/api/*/route.js</code></li>
+<li class="">Compatible with Next.js 16</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Components</strong></p>
+<ul>
+<li class="">React 18 components</li>
+<li class="">Server/Client component patterns already in use</li>
+<li class="">Radix UI components compatible</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Styling</strong></p>
+<ul>
+<li class="">Tailwind CSS 3.4.1 (compatible)</li>
+<li class="">CSS Modules (compatible)</li>
+<li class="">Global CSS (compatible)</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Dependencies - Core</strong></p>
+<ul>
+<li class="">MongoDB driver (compatible)</li>
+<li class="">Winston logger (compatible)</li>
+<li class="">Lucide React icons (compatible)</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-requires-attention---potential-issues">⚠️ <strong>REQUIRES ATTENTION</strong> - Potential Issues<a href="#️-requires-attention---potential-issues" class="hash-link" aria-label="Direct link to ️-requires-attention---potential-issues" title="Direct link to ️-requires-attention---potential-issues" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-markdoc-configuration">1. <strong>Markdoc Configuration</strong><a href="#1-markdoc-configuration" class="hash-link" aria-label="Direct link to 1-markdoc-configuration" title="Direct link to 1-markdoc-configuration" translate="no">​</a></h3>
+<p><strong>Current</strong>: <code>@markdoc/next.js</code> v0.3.7 with custom config</p>
+<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> withMarkdoc </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">require</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&#x27;@markdoc/next.js&#x27;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">module</span><span class="token punctuation" style="color:#393A34">.</span><span class="token property-access">exports</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">withMarkdoc</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">(</span><span class="token spread operator" style="color:#393A34">...</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre></div></div>
+<p><strong>Issue</strong>: May need updates for Next.js 16 compatibility</p>
+<p><strong>Action Required</strong>:</p>
+<ul>
+<li class="">Check <code>@markdoc/next.js</code> compatibility with Next.js 16</li>
+<li class="">Consider migrating to native MDX support if Markdoc causes issues</li>
+<li class="">Test Markdoc rendering after upgrade</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-mdx-configuration">2. <strong>MDX Configuration</strong><a href="#2-mdx-configuration" class="hash-link" aria-label="Direct link to 2-mdx-configuration" title="Direct link to 2-mdx-configuration" translate="no">​</a></h3>
+<p><strong>Current</strong>: Multiple MDX packages</p>
+<ul>
+<li class=""><code>@mdx-js/loader</code> v3.0.1</li>
+<li class=""><code>@mdx-js/react</code> v3.0.1</li>
+<li class=""><code>@next/mdx</code> v14.2.4</li>
+</ul>
+<p><strong>Action Required</strong>:</p>
+<ul>
+<li class="">Update <code>@next/mdx</code> to v16.x</li>
+<li class="">Verify MDX loader compatibility</li>
+<li class="">Test all <code>.md</code> and <code>.mdx</code> pages</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-ag-grid-react">3. <strong>AG Grid React</strong><a href="#3-ag-grid-react" class="hash-link" aria-label="Direct link to 3-ag-grid-react" title="Direct link to 3-ag-grid-react" translate="no">​</a></h3>
+<p><strong>Current</strong>: v31.3.2</p>
+<p><strong>Consideration</strong>:</p>
+<ul>
+<li class="">Large dependency, may have performance implications</li>
+<li class="">Verify compatibility with React 19 (if Next.js 16 uses it)</li>
+<li class="">Consider alternatives if issues arise</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-react-table">4. <strong>React Table</strong><a href="#4-react-table" class="hash-link" aria-label="Direct link to 4-react-table" title="Direct link to 4-react-table" translate="no">​</a></h3>
+<p><strong>Current</strong>: v7.8.0 (older version)</p>
+<p><strong>Issue</strong>: React Table v7 is deprecated</p>
+<p><strong>Recommendation</strong>:</p>
+<ul>
+<li class="">Migrate to TanStack Table v8 (successor to React Table)</li>
+<li class="">Or use native HTML tables with Tailwind</li>
+<li class="">Current version may have React 19 compatibility issues</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-migration-steps">🔄 <strong>MIGRATION STEPS</strong><a href="#-migration-steps" class="hash-link" aria-label="Direct link to -migration-steps" title="Direct link to -migration-steps" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-1-preparation-before-migration">Phase 1: Preparation (Before Migration)<a href="#phase-1-preparation-before-migration" class="hash-link" aria-label="Direct link to Phase 1: Preparation (Before Migration)" title="Direct link to Phase 1: Preparation (Before Migration)" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Backup Current State</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">git checkout -b pre-nextjs16-backup</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">git push origin pre-nextjs16-backup</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Document Current Functionality</strong></p>
+<ul>
+<li class="">Test all API endpoints</li>
+<li class="">Document all page routes</li>
+<li class="">Screenshot current UI states</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Update Dependencies (Non-Breaking)</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm update tailwindcss</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm update lucide-react</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm update mongodb</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-2-core-migration">Phase 2: Core Migration<a href="#phase-2-core-migration" class="hash-link" aria-label="Direct link to Phase 2: Core Migration" title="Direct link to Phase 2: Core Migration" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Update Next.js and React</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm install next@16 react@latest react-dom@latest</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Update Next.js Specific Packages</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm install @next/mdx@16</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm install eslint-config-next@16</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Update Configuration Files</strong></p>
+<p><strong>next.config.js</strong> → <strong>next.config.mjs</strong></p>
+<div class="language-javascript codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-javascript codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword module" style="color:#00009f">import</span><span class="token plain"> </span><span class="token imports">withMarkdoc</span><span class="token plain"> </span><span class="token keyword module" style="color:#00009f">from</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;@markdoc/next.js&#x27;</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword module" style="color:#00009f">export</span><span class="token plain"> </span><span class="token keyword module" style="color:#00009f">default</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">withMarkdoc</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token literal-property property" style="color:#36acaa">pageExtensions</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&#x27;md&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;mdoc&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;js&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;jsx&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;ts&#x27;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&#x27;tsx&#x27;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-3-dependency-updates">Phase 3: Dependency Updates<a href="#phase-3-dependency-updates" class="hash-link" aria-label="Direct link to Phase 3: Dependency Updates" title="Direct link to Phase 3: Dependency Updates" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Update Radix UI Components</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm update @radix-ui/react-label</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm update @radix-ui/react-navigation-menu</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm update @radix-ui/react-slot</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm update @radix-ui/react-tabs</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Replace React Table</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm uninstall react-table</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm install @tanstack/react-table</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Update AG Grid (if needed)</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm update ag-grid-react</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-4-code-updates">Phase 4: Code Updates<a href="#phase-4-code-updates" class="hash-link" aria-label="Direct link to Phase 4: Code Updates" title="Direct link to Phase 4: Code Updates" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Update Import Statements</strong></p>
+<ul>
+<li class="">Change React Table imports to TanStack Table</li>
+<li class="">Update any deprecated Next.js imports</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Update API Routes</strong></p>
+<ul>
+<li class="">Verify all API routes use new Response patterns</li>
+<li class="">Update to use Next.js 16 API conventions</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Update Metadata</strong></p>
+<ul>
+<li class="">Verify metadata exports in layouts</li>
+<li class="">Update any generateMetadata functions</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-5-testing">Phase 5: Testing<a href="#phase-5-testing" class="hash-link" aria-label="Direct link to Phase 5: Testing" title="Direct link to Phase 5: Testing" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Development Testing</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm run dev</span><br></span></code></pre></div></div>
+<ul>
+<li class="">Test all pages load correctly</li>
+<li class="">Verify API endpoints work</li>
+<li class="">Check MongoDB connections</li>
+<li class="">Test Markdoc/MDX rendering</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Build Testing</strong></p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">npm run build</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">npm run start</span><br></span></code></pre></div></div>
+<ul>
+<li class="">Verify production build succeeds</li>
+<li class="">Test production mode functionality</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Component Testing</strong></p>
+<ul>
+<li class="">Test all UI components</li>
+<li class="">Verify DataGrid functionality</li>
+<li class="">Check navigation menu</li>
+<li class="">Test tabs and cards</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-migration-checklist">📋 <strong>MIGRATION CHECKLIST</strong><a href="#-migration-checklist" class="hash-link" aria-label="Direct link to -migration-checklist" title="Direct link to -migration-checklist" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pre-migration">Pre-Migration<a href="#pre-migration" class="hash-link" aria-label="Direct link to Pre-Migration" title="Direct link to Pre-Migration" translate="no">​</a></h3>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Create backup branch</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Document current functionality</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Test all features in current version</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Review Next.js 16 changelog</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Check all dependency compatibility</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="migration">Migration<a href="#migration" class="hash-link" aria-label="Direct link to Migration" title="Direct link to Migration" translate="no">​</a></h3>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Update package.json dependencies</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Run <code>npm install</code></li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Update next.config.js to .mjs</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Update API routes if needed</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Replace React Table with TanStack Table</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Update Markdoc configuration</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Update MDX configuration</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="post-migration-testing">Post-Migration Testing<a href="#post-migration-testing" class="hash-link" aria-label="Direct link to Post-Migration Testing" title="Direct link to Post-Migration Testing" translate="no">​</a></h3>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Home page loads correctly</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->All navigation links work</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->API endpoints respond correctly<!-- -->
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <code>/api/adaptiveworks/*</code></li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <code>/api/mongodb/*</code></li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <code>/api/sync/*</code></li>
+</ul>
+</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->MongoDB connection works</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->DataGrid displays data</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Markdoc pages render</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->MDX pages render</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Styling is correct</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Images load properly</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Production build succeeds</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->No console errors</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-potential-breaking-changes">🚨 <strong>POTENTIAL BREAKING CHANGES</strong><a href="#-potential-breaking-changes" class="hash-link" aria-label="Direct link to -potential-breaking-changes" title="Direct link to -potential-breaking-changes" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-metadata-api-changes">1. <strong>Metadata API Changes</strong><a href="#1-metadata-api-changes" class="hash-link" aria-label="Direct link to 1-metadata-api-changes" title="Direct link to 1-metadata-api-changes" translate="no">​</a></h3>
+<p>Next.js 16 may have updated metadata handling</p>
+<ul>
+<li class="">Review all <code>metadata</code> exports</li>
+<li class="">Update <code>generateMetadata</code> functions if needed</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-image-optimization">2. <strong>Image Optimization</strong><a href="#2-image-optimization" class="hash-link" aria-label="Direct link to 2-image-optimization" title="Direct link to 2-image-optimization" translate="no">​</a></h3>
+<p>Next.js 16 may have new Image component features</p>
+<ul>
+<li class="">Current usage appears standard</li>
+<li class="">Should work without changes</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-font-optimization">3. <strong>Font Optimization</strong><a href="#3-font-optimization" class="hash-link" aria-label="Direct link to 3-font-optimization" title="Direct link to 3-font-optimization" translate="no">​</a></h3>
+<p>Current: <code>next/font/google</code> with Inter</p>
+<ul>
+<li class="">Should remain compatible</li>
+<li class="">Verify font loading after migration</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-environment-variables">4. <strong>Environment Variables</strong><a href="#4-environment-variables" class="hash-link" aria-label="Direct link to 4-environment-variables" title="Direct link to 4-environment-variables" translate="no">​</a></h3>
+<ul>
+<li class="">Verify <code>.env.local</code> still works</li>
+<li class="">Check for any new environment variable patterns</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-risk-assessment">📊 <strong>RISK ASSESSMENT</strong><a href="#-risk-assessment" class="hash-link" aria-label="Direct link to -risk-assessment" title="Direct link to -risk-assessment" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="low-risk-">Low Risk ✅<a href="#low-risk-" class="hash-link" aria-label="Direct link to Low Risk ✅" title="Direct link to Low Risk ✅" translate="no">​</a></h3>
+<ul>
+<li class="">App Router structure (already compatible)</li>
+<li class="">API routes (standard implementation)</li>
+<li class="">Tailwind CSS (stable)</li>
+<li class="">MongoDB integration (independent)</li>
+<li class="">Basic components (standard React)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="medium-risk-️">Medium Risk ⚠️<a href="#medium-risk-️" class="hash-link" aria-label="Direct link to Medium Risk ⚠️" title="Direct link to Medium Risk ⚠️" translate="no">​</a></h3>
+<ul>
+<li class="">Markdoc integration (custom config)</li>
+<li class="">MDX pages (version updates needed)</li>
+<li class="">AG Grid (large dependency)</li>
+<li class="">Custom DataGrid component</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="high-risk-">High Risk 🔴<a href="#high-risk-" class="hash-link" aria-label="Direct link to High Risk 🔴" title="Direct link to High Risk 🔴" translate="no">​</a></h3>
+<ul>
+<li class="">React Table v7 (deprecated, needs replacement)</li>
+<li class="">Mixed page structure (<code>app/pages/</code> directory)</li>
+<li class="">Custom Markdoc configuration</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-recommendations">💡 <strong>RECOMMENDATIONS</strong><a href="#-recommendations" class="hash-link" aria-label="Direct link to -recommendations" title="Direct link to -recommendations" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="immediate-actions">Immediate Actions<a href="#immediate-actions" class="hash-link" aria-label="Direct link to Immediate Actions" title="Direct link to Immediate Actions" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Migrate React Table First</strong> (before Next.js upgrade)</p>
+<ul>
+<li class="">Replace with TanStack Table v8</li>
+<li class="">Test thoroughly in current Next.js version</li>
+<li class="">Reduces migration complexity</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Simplify Page Structure</strong></p>
+<ul>
+<li class="">Move <code>app/pages/</code> to proper App Router structure</li>
+<li class="">Consolidate routing patterns</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Update Documentation</strong></p>
+<ul>
+<li class="">Document all custom configurations</li>
+<li class="">Create migration runbook</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="migration-strategy">Migration Strategy<a href="#migration-strategy" class="hash-link" aria-label="Direct link to Migration Strategy" title="Direct link to Migration Strategy" translate="no">​</a></h3>
+<p><strong>Recommended Approach</strong>: <strong>Incremental Migration</strong></p>
+<ol>
+<li class=""><strong>Week 1</strong>: Dependency updates (non-breaking)</li>
+<li class=""><strong>Week 2</strong>: React Table → TanStack Table migration</li>
+<li class=""><strong>Week 3</strong>: Next.js 16 core upgrade</li>
+<li class=""><strong>Week 4</strong>: Testing and bug fixes</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="alternative-approach">Alternative Approach<a href="#alternative-approach" class="hash-link" aria-label="Direct link to Alternative Approach" title="Direct link to Alternative Approach" translate="no">​</a></h3>
+<p><strong>Big Bang Migration</strong> (if timeline is tight)</p>
+<ul>
+<li class="">Do all updates at once</li>
+<li class="">Higher risk but faster</li>
+<li class="">Requires extensive testing period</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-estimated-effort">🔧 <strong>ESTIMATED EFFORT</strong><a href="#-estimated-effort" class="hash-link" aria-label="Direct link to -estimated-effort" title="Direct link to -estimated-effort" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="development-time">Development Time<a href="#development-time" class="hash-link" aria-label="Direct link to Development Time" title="Direct link to Development Time" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Preparation</strong>: 4-8 hours</li>
+<li class=""><strong>Core Migration</strong>: 8-16 hours</li>
+<li class=""><strong>React Table Migration</strong>: 8-12 hours</li>
+<li class=""><strong>Testing</strong>: 16-24 hours</li>
+<li class=""><strong>Bug Fixes</strong>: 8-16 hours</li>
+</ul>
+<p><strong>Total</strong>: 44-76 hours (5-10 business days)</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="team-requirements">Team Requirements<a href="#team-requirements" class="hash-link" aria-label="Direct link to Team Requirements" title="Direct link to Team Requirements" translate="no">​</a></h3>
+<ul>
+<li class="">1 Senior Developer (lead migration)</li>
+<li class="">1 QA Engineer (testing)</li>
+<li class="">Access to staging environment</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-success-criteria">✅ <strong>SUCCESS CRITERIA</strong><a href="#-success-criteria" class="hash-link" aria-label="Direct link to -success-criteria" title="Direct link to -success-criteria" translate="no">​</a></h2>
+<p>Migration is successful when:</p>
+<ol>
+<li class="">All pages load without errors</li>
+<li class="">All API endpoints function correctly</li>
+<li class="">MongoDB connections work</li>
+<li class="">DataGrid displays data properly</li>
+<li class="">Navigation works as expected</li>
+<li class="">Production build completes successfully</li>
+<li class="">No performance degradation</li>
+<li class="">All tests pass</li>
+<li class="">No console errors or warnings</li>
+<li class="">Documentation is updated</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-resources">📚 <strong>RESOURCES</strong><a href="#-resources" class="hash-link" aria-label="Direct link to -resources" title="Direct link to -resources" translate="no">​</a></h2>
+<ul>
+<li class=""><a href="https://nextjs.org/docs/upgrading" target="_blank" rel="noopener noreferrer" class="">Next.js 16 Upgrade Guide</a></li>
+<li class=""><a href="https://tanstack.com/table/v8/docs/guide/migrating" target="_blank" rel="noopener noreferrer" class="">TanStack Table Migration Guide</a></li>
+<li class=""><a href="https://markdoc.dev/docs/nextjs" target="_blank" rel="noopener noreferrer" class="">Markdoc Next.js Integration</a></li>
+<li class=""><a href="https://nextjs.org/docs/app" target="_blank" rel="noopener noreferrer" class="">Next.js App Router Documentation</a></li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-conclusion">🎯 <strong>CONCLUSION</strong><a href="#-conclusion" class="hash-link" aria-label="Direct link to -conclusion" title="Direct link to -conclusion" translate="no">​</a></h2>
+<p><strong>Migration Feasibility</strong>: ✅ <strong>FEASIBLE</strong></p>
+<p>The api-dashboard project is well-positioned for Next.js 16 migration:</p>
+<ul>
+<li class="">Already using App Router</li>
+<li class="">Modern React patterns</li>
+<li class="">Standard Next.js conventions</li>
+</ul>
+<p><strong>Primary Concerns</strong>:</p>
+<ol>
+<li class="">React Table v7 deprecation (must address)</li>
+<li class="">Markdoc compatibility (needs verification)</li>
+<li class="">Mixed page structure (should consolidate)</li>
+</ol>
+<p><strong>Recommendation</strong>: <strong>Proceed with incremental migration approach</strong></p>
+<ul>
+<li class="">Lower risk</li>
+<li class="">Easier to troubleshoot</li>
+<li class="">Better for production stability</li>
+</ul>
+<p><strong>Timeline</strong>: 2-3 weeks for complete migration and testing</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/shawnmcrowley/shawnmcrowley.github.io/tree/main/packages/create-docusaurus/templates/shared/docs/nextjs-dev/NEXTJS16_MIGRATION_EVALUATION.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/doc/docs/nextjs-dev/NEXT15_to_NEXT16"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">NEXT15_to_NEXT16</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/doc/docs/category/nginx-setup-and-config"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Nginx Setup and Config</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#current-state-analysis" class="table-of-contents__link toc-highlight">Current State Analysis</a><ul><li><a href="#current-version" class="table-of-contents__link toc-highlight">Current Version</a></li><li><a href="#project-structure" class="table-of-contents__link toc-highlight">Project Structure</a></li></ul></li><li><a href="#migration-compatibility-assessment" class="table-of-contents__link toc-highlight">Migration Compatibility Assessment</a><ul><li><a href="#-compatible---no-changes-required" class="table-of-contents__link toc-highlight">✅ <strong>COMPATIBLE</strong> - No Changes Required</a></li></ul></li><li><a href="#️-requires-attention---potential-issues" class="table-of-contents__link toc-highlight">⚠️ <strong>REQUIRES ATTENTION</strong> - Potential Issues</a><ul><li><a href="#1-markdoc-configuration" class="table-of-contents__link toc-highlight">1. <strong>Markdoc Configuration</strong></a></li><li><a href="#2-mdx-configuration" class="table-of-contents__link toc-highlight">2. <strong>MDX Configuration</strong></a></li><li><a href="#3-ag-grid-react" class="table-of-contents__link toc-highlight">3. <strong>AG Grid React</strong></a></li><li><a href="#4-react-table" class="table-of-contents__link toc-highlight">4. <strong>React Table</strong></a></li></ul></li><li><a href="#-migration-steps" class="table-of-contents__link toc-highlight">🔄 <strong>MIGRATION STEPS</strong></a><ul><li><a href="#phase-1-preparation-before-migration" class="table-of-contents__link toc-highlight">Phase 1: Preparation (Before Migration)</a></li><li><a href="#phase-2-core-migration" class="table-of-contents__link toc-highlight">Phase 2: Core Migration</a></li><li><a href="#phase-3-dependency-updates" class="table-of-contents__link toc-highlight">Phase 3: Dependency Updates</a></li><li><a href="#phase-4-code-updates" class="table-of-contents__link toc-highlight">Phase 4: Code Updates</a></li><li><a href="#phase-5-testing" class="table-of-contents__link toc-highlight">Phase 5: Testing</a></li></ul></li><li><a href="#-migration-checklist" class="table-of-contents__link toc-highlight">📋 <strong>MIGRATION CHECKLIST</strong></a><ul><li><a href="#pre-migration" class="table-of-contents__link toc-highlight">Pre-Migration</a></li><li><a href="#migration" class="table-of-contents__link toc-highlight">Migration</a></li><li><a href="#post-migration-testing" class="table-of-contents__link toc-highlight">Post-Migration Testing</a></li></ul></li><li><a href="#-potential-breaking-changes" class="table-of-contents__link toc-highlight">🚨 <strong>POTENTIAL BREAKING CHANGES</strong></a><ul><li><a href="#1-metadata-api-changes" class="table-of-contents__link toc-highlight">1. <strong>Metadata API Changes</strong></a></li><li><a href="#2-image-optimization" class="table-of-contents__link toc-highlight">2. <strong>Image Optimization</strong></a></li><li><a href="#3-font-optimization" class="table-of-contents__link toc-highlight">3. <strong>Font Optimization</strong></a></li><li><a href="#4-environment-variables" class="table-of-contents__link toc-highlight">4. <strong>Environment Variables</strong></a></li></ul></li><li><a href="#-risk-assessment" class="table-of-contents__link toc-highlight">📊 <strong>RISK ASSESSMENT</strong></a><ul><li><a href="#low-risk-" class="table-of-contents__link toc-highlight">Low Risk ✅</a></li><li><a href="#medium-risk-️" class="table-of-contents__link toc-highlight">Medium Risk ⚠️</a></li><li><a href="#high-risk-" class="table-of-contents__link toc-highlight">High Risk 🔴</a></li></ul></li><li><a href="#-recommendations" class="table-of-contents__link toc-highlight">💡 <strong>RECOMMENDATIONS</strong></a><ul><li><a href="#immediate-actions" class="table-of-contents__link toc-highlight">Immediate Actions</a></li><li><a href="#migration-strategy" class="table-of-contents__link toc-highlight">Migration Strategy</a></li><li><a href="#alternative-approach" class="table-of-contents__link toc-highlight">Alternative Approach</a></li></ul></li><li><a href="#-estimated-effort" class="table-of-contents__link toc-highlight">🔧 <strong>ESTIMATED EFFORT</strong></a><ul><li><a href="#development-time" class="table-of-contents__link toc-highlight">Development Time</a></li><li><a href="#team-requirements" class="table-of-contents__link toc-highlight">Team Requirements</a></li></ul></li><li><a href="#-success-criteria" class="table-of-contents__link toc-highlight">✅ <strong>SUCCESS CRITERIA</strong></a></li><li><a href="#-resources" class="table-of-contents__link toc-highlight">📚 <strong>RESOURCES</strong></a></li><li><a href="#-conclusion" class="table-of-contents__link toc-highlight">🎯 <strong>CONCLUSION</strong></a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/doc/docs/intro">Tutorial</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://twitter.com/shawnmcrowley" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/doc/blog">Blog</a></li><li class="footer__item"><a href="https://github.com/shawnmcrowley/shawnmcrowley.github.io" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Personal Portfolio</div></div></div></footer></div>
+</body>
+</html>
