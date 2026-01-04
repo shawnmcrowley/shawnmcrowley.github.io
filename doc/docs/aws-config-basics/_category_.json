@@ -1,0 +1,8 @@
+{
+  "label": "Amazon Web Services (AWS) - Basics",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Setup, Configuration and Usage of the most common AWS Services."
+  }
+}

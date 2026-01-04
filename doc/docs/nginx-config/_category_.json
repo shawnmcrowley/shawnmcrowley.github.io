@@ -1,0 +1,8 @@
+{
+  "label": "Nginx Setup and Config",
+  "position": 5,
+  "link": {
+    "type": "generated-index",
+    "description": "Setup, Configuration and Usage of Nginx."
+  }
+}
